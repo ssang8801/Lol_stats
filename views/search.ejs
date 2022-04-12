@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>LeagueOfLegends</title>
+    <link rel="icon" type="image/x-icon" href="/images/LoL_icon.svg.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,400;0,500;0,600;0,700;0,900;1,600;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/index.css">
+  </head>
+  <body>
+    <div class="navbar-container">
+      <div class="navbar">
+        <ul>
+          <a href="/"><li>Home</li></a>
+          <a href="/ranking"><li>Ranking</li></a>
+          <a href="/"><li>Statistics</li></a>
+          <a href="/"><li>Community</li></a>
+          <a href="/"><li>Announcements</li></a>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 text-center">
+          <h5 style="font-weight:bold">User Profile</h5>
+        </div>
+        <div class="col-lg-8 text-center">
+          <h5 style="font-weight:bold">Match History</h5>
+        </div>
+
+      </div>
+      <div class="row mt-0 pt-0">
+        <div class="col-lg-4">
+          <div class="row">
+            <div class="col-lg-5">
+              <img src=<%= iconNumber %> alt="">
+            </div>
+            <div class="col-lg-7">
+              <h4>Server: NA</h4>
+              <h5>ID: <%= summonerID %></h5>
+              <p>Level: <%= summonerLevel %></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-5">
+              <img src=<%= rankNumber %> alt="">
+            </div>
+            <div class="col-lg-7">
+              <h4>Solo Queue</h4>
+              <h5>Tier: <%= rank %></h5>
+              <p>Wins: <%= win %></p>
+              <p>Losses: <%= loss %></p>
+              <p>Winrate: <%= winrate %>%</p>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-lg-8 text-center text-left">
+          <ul class="match_info_conatiner_ul">
+            <% if(matchList.length){
+            for(var i = 0; i < matchList.length; i++){
+              if(matchList[i].exist){%>
+            <li class="match_info_container" <% if(matchList[i].win){%>
+              style="background-color: #E0FFFF"
+            <% } else{ %>
+              style="background-color: #FFE4E1"
+            <% } %>>
+              <div class="match_image">
+                <p <% if(matchList[i].win){ %>
+                  style="font-weight:bold; color: green;"> Victory
+                <% } else{ %>
+
+                  style="font-weight:bold; color: red;" > Loss
+
+                <% } %>
+              </p>
+                <img src = <%= matchList[i].championURL %> alt="">
+              </div>
+              <div class="match_info">
+                <p style="font-weight:bold"> <%= matchList[i].queueId %> </p>
+                <p style="font-weight:bold; line-height:">Duration: <br><%= matchList[i].playTime_Minute %> m  <%= matchList[i].playTime_Second %> s</p>
+                <p style="font-weight:bold"><%= matchList[i].gameEndRelative %></p>
+              </div>
+              <div class="match_teammates teammates_left" style="background-color:white ;">
+                <p style="font-weight:bold; background-color: white; border-bottom: 1px black solid"><img src="/images/summoners_rift_blue.jpg" alt="">Blue Team</p>
+                <% for(var z = 0; z < matchList[i].players.length/2; z++){ %>
+                  <div class="row">
+                    <div class="col-lg-8 col-md-8 col-sm-8">
+                      <p
+                      <% if( matchList[i].players[z].win && !matchList[i].players[z].searched){ %>
+
+                         style="background-color:#E0FFFF;"
+
+                      <%} else if(matchList[i].players[z].win && matchList[i].players[z].searched) {%>
+
+                           style="background-color:#ADD8E6; font-weight:bold"
+
+                      <%} else if(!matchList[i].players[z].win && matchList[i].players[z].searched){ %>
+
+                          style="background-color:#FFB6C1; font-weight:bold"
+
+                      <% } else{ %>
+
+                        style="background-color:#FFE4E1;"
+
+                      <% } %> >
+
+                      <img src= <%= matchList[i].players[z].championURL %> alt=""> <a href="/search/<%= matchList[i].players[z].summonerName %>"><%= matchList[i].players[z].summonerName %></a>
+
+                      </p>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4">
+                      <p
+                      <% if( matchList[i].players[z].win && !matchList[i].players[z].searched){ %>
+
+                         style="background-color:#E0FFFF;"
+
+                      <%} else if(matchList[i].players[z].win && matchList[i].players[z].searched) {%>
+
+                           style="background-color:#ADD8E6; font-weight:bold"
+
+                      <%} else if(!matchList[i].players[z].win && matchList[i].players[z].searched){ %>
+
+                          style="background-color:#FFB6C1; font-weight:bold"
+
+                      <% } else{ %>
+
+                        style="background-color:#FFE4E1;"
+
+                      <% } %> >
+
+                      <%= matchList[i].players[z].kill %>/
+                      <%= matchList[i].players[z].death %>/
+                      <%= matchList[i].players[z].assist %>
+
+                      </p>
+                    </div>
+                  </div>
+
+
+                  <% } %>
+
+              </div>
+              <div class="match_teammates teammates_right" style="background-color:white;">
+                <p style= "font-weight:bold; background-color:white; border-bottom: 1px black solid">Red Team<img src="/images/summoners_rift_red.jpg" alt=""></p>
+                <% for(var q = 5; q < matchList[i].players.length; q++){ %>
+                  <div class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-4">
+                      <p
+
+                    <% if( matchList[i].players[q].win  && !matchList[i].players[q].searched){ %>
+
+                      style="background-color:#E0FFFF;"
+
+                    <%} else if(matchList[i].players[q].win && matchList[i].players[q].searched) {%>
+
+                      style="background-color:#ADD8E6; font-weight: bold;"
+
+                    <%} else if(!matchList[i].players[q].win && matchList[i].players[q].searched){ %>
+
+                      style="background-color:#FFB6C1; font-weight:bold"
+
+                    <% } else{ %>
+
+                      style="background-color:#FFE4E1;"
+
+                    <% } %> >
+
+                      <%= matchList[i].players[q].kill %>/
+                      <%= matchList[i].players[q].death %>/
+                      <%= matchList[i].players[q].assist %>
+
+                      </p>
+                    </div>
+                    <div class="col-lg-8 col-md-8 col-sm-8">
+                      <p
+
+                    <% if( matchList[i].players[q].win  && !matchList[i].players[q].searched){ %>
+
+                      style="background-color:#E0FFFF;"
+
+                    <%} else if(matchList[i].players[q].win && matchList[i].players[q].searched) {%>
+
+                      style="background-color:#ADD8E6; font-weight: bold;"
+
+                    <%} else if(!matchList[i].players[q].win && matchList[i].players[q].searched){ %>
+
+                      style="background-color:#FFB6C1; font-weight:bold"
+
+                    <% } else{ %>
+
+                      style="background-color:#FFE4E1;"
+
+                    <% } %> >
+
+                    <a href="/search/<%= matchList[i].players[q].summonerName %>"><%= matchList[i].players[q].summonerName %></a>
+                      <img src= <%= matchList[i].players[q].championURL %> alt="">
+                      </p>
+                    </div>
+                  </div>
+
+                <% } %>
+
+              </div>
+            </li>
+          <% }}} %>
+          </ul>
+          <h3> </h3>
+        </div>
+
+      </div>
+    </div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  </body>
+</html>

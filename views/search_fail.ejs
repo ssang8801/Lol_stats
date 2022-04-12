@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>LeagueOfLegends</title>
+    <link rel="icon" type="image/x-icon" href="/images/LoL_icon.svg.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,400;0,500;0,600;0,700;0,900;1,600;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/index.css">
+  </head>
+  <body>
+    <div class="navbar-container">
+      <div class="navbar">
+        <ul>
+          <a href="/"><li class="active">Home</li></a>
+          <a href="/"><li>Ranking</li></a>
+          <a href="/"><li>Statistics</li></a>
+          <a href="/"><li>Community</li></a>
+          <a href="/"><li>Announcements</li></a>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container">
+      <h1> Error Code <%= errorCode %> </h1>
+      <h2>Please go back to the main page and try again. Refer to below table for error types</h2>
+      <div class="row">
+        <div class="col-lg-4">
+          <p>400</p>
+        </div>
+        <div class="col-lg-8">
+          <p>Bad Request</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-4">
+          <p>401</p>
+        </div>
+        <div class="col-lg-8">
+          <p>Unauthorized Request</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-4">
+          <p>403</p>
+        </div>
+        <div class="col-lg-8">
+          <p>Forbidden</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-4">
+          <p>404</p>
+        </div>
+        <div class="col-lg-8">
+          <p>Data Not Found (Check username searched)</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-4">
+          <p>405</p>
+        </div>
+        <div class="col-lg-8">
+          <p>Match Not Allowed</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-4">
+          <p>415</p>
+        </div>
+        <div class="col-lg-8">
+          <p>Unsupported Media Type</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-4">
+          <p>429</p>
+        </div>
+        <div class="col-lg-8">
+          <p>Rate Limit Exceeded</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-4">
+          <p>500</p>
+        </div>
+        <div class="col-lg-8">
+          <p>Internal Server Error</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-4">
+          <p>502</p>
+        </div>
+        <div class="col-lg-8">
+          <p>Bad Gateway</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-4">
+          <p>503</p>
+        </div>
+        <div class="col-lg-8">
+          <p>Service Unavailable</p>
+        </div>
+      </div>
+    </div>
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  </body>
+</html>
